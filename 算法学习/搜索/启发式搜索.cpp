@@ -18,7 +18,7 @@ struct Obj
     }
 }obj[N];
 
-//估价函数
+//估价函数 
 int f(int t,int p){
     int tot=0;
     for(int i=t+1;i<n;++i){
@@ -35,6 +35,8 @@ int f(int t,int p){
 void dfs(int t,int p,int v){
     res=max(res,v);
     if(t>=n)return;
+    //基于估价函数剪枝
     if(f(t,p)+v>res)dfs(t+1,p,v);
     if(obj[t].w<=p)dfs(t+1,p-obj[t].w,v+obj[t].v);
 }
+
